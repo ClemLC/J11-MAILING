@@ -37,7 +37,7 @@ require 'json'
 session = GoogleDrive::Session.from_config("config.json")
 ws = session.spreadsheet_by_key("1ZK0KlAl4uaVxgx7OoafAxQB_aeWh2W1wogMGOSa_hzE").worksheets[0]
 
-ws[1, 1] = "ville"
+ws[1, 1] = "ville"#je nomme les en-têtes de colonnes du spreadsheet
 ws[1, 2] = "mail"
 
 for j in (2..$city.length-1) do
