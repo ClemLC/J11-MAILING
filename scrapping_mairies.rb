@@ -7,9 +7,9 @@ $email = []# la même pour les adresses emails
 
 def get_all_the_urls_of_val_doise_townhalls (web_list)
   page = Nokogiri::HTML(open(web_list))
-  $is = 1
+  $is = 1#va nous permettre de ne pas avoir de décalage entre les mairies et leurs mails
   page.css("a.lientxt").each do |url|
-    url['href'] = url['href'][1..-1]
+    url['href'] = url['href'][1..-1]#on vire le "." devant l'url afin de pour l'ajouter par la suite à l'adresse de la page web
     web_page = "http://annuaire-des-mairies.com" + url['href']
     $city[$is]= url.text
 
@@ -30,7 +30,7 @@ end
 
 get_all_the_urls_of_val_doise_townhalls("http://www.annuaire-des-mairies.com/essonne.html")
 
-require 'google_drive'
+require 'google_drive'#on requiert les gems dont on va se servir par la suite
 require 'json'
 
 
@@ -40,7 +40,7 @@ ws = session.spreadsheet_by_key("1ZK0KlAl4uaVxgx7OoafAxQB_aeWh2W1wogMGOSa_hzE").
 ws[1, 1] = "ville"#je nomme les en-têtes de colonnes du spreadsheet
 ws[1, 2] = "mail"
 
-for j in (2..$city.length-1) do
+for j in (2..$city.length-1) do#je commence à 2 car en 1 il y a les en-têtes !
   ws[j, 1] = $city[j]
    ws[j, 2] = $email[j]
    ws.save
