@@ -10,4 +10,4 @@ A file to send all this emails  with your google account.
 
 ## that's it !!
 
-#TRAVAIL ASSI, TRAVAIL PRECI !!!
+#TRAVAIL ASSIS, TRAVAIL PRECIS !!!
